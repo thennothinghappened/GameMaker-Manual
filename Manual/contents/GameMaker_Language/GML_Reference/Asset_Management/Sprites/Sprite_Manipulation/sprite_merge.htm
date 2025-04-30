@@ -46,13 +46,24 @@
   <p class="code"><span data-keyref="Type_Void">N/A</span></p>
   <p> </p>
   <h4>Example:</h4>
-  <p class="code">var tspr = array_create(2);<br />
-    tspr[0] = sprite_add(working_directory + &quot;Sprite Assets/explode1.png&quot;, 16, true, true, 0, 0);<br />
-    tspr[1] = sprite_duplicate(spr_Explosion);<br />
-    sprite_merge(tspr[0], tspr[1]);<br />
-    sprite_index = tspr[0];<br />
-    sprite_delete(tspr[1]);</p>
-  <p>The above code loads a sprite into a local variable then merges it with another sprite that has been duplicated. Finally the merged sprite is assigned to the instance <span class="inline">sprite_index</span> while the loaded sprite is removed to free the memory it uses. Note that at some point after this operation, like in the Destroy or Room End events, you will also need to use <a href="sprite_delete.htm"><span class="inline">sprite_delete()</span></a> to remove the merged sprite from memory too.</p>
+  <p class="code">var _barrel_explosion = sprite_add("images/explosions/barrel.png", 16, true, true, 0, 0);
+    var _explosion_end = sprite_duplicate(spr_explosion_generic);
+    
+    sprite_merge(_barrel_explosion, _explosion_end);
+    sprite_delete(_explosion_end);
+    
+    sprite_index = _barrel_explosion;
+  </p>
+  <p>
+    The code above creates a sprite animation for an exploding barrel by loading the start of the animation, and merging
+    a generic explosion sprite at the end. Since the generic explosion is an original resource, it must be duplicated
+    before being merged. Finally, the new explosion sprite is assigned to the <span class="inline">sprite_index</span>
+    of the instance.
+  </p>
+  <p>
+    Once it is no longer needed, <a href="sprite_delete.htm"><span class="inline">sprite_delete()</span></a> must be
+    used to remove the new sprite from memory.
+  </p>
   <p> </p>
   <p> </p>
   <p> </p>
