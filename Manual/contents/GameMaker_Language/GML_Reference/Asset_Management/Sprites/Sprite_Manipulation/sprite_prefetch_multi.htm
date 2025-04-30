@@ -40,11 +40,9 @@
   <p class="code"><span data-keyref="Type_Real"><a href="../../../../GML_Overview/Data_Types.htm" target="_blank">Real</a></span> (-1 or 0)</p>
   <p> </p>
   <h4>Example:</h4>
-  <p class="code">spr_a[0] = spr_Player_Aura1;<br />
-    spr_a[1] = spr_Player_Aura2;<br />
-    spr_a[2] = spr_Player_Aura3;<br />
-    spr_a[3] = spr_Player_Aura4;<br />
-    sprite_prefetch_multi(spr_a);</p>
+  <p class="code">aura_sprites = [spr_Player_Aura1, spr_Player_Aura2, spr_Player_Aura3, spr_Player_Aura4];
+    <span data-field="title" data-format="default">sprite_prefetch_multi</span>(aura_sprites);
+  </p>
   <p>The above code creates an array where each element holds a sprite index. This array is then used to place those sprite textures into memory.</p>
   <p> </p>
   <p> </p>
