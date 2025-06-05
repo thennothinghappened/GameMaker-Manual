@@ -42,15 +42,23 @@
   <div data-conref="../../../../assets/snippets/Asset_Type_Constants.hts"> </div>
   <p> </p>
   <h4>Example:</h4>
-  <p class="code">if <span data-field="title" data-format="default">asset_get_type</span>(&quot;pth_Path_&quot; + string(global.Game)) == asset_unknown<br />
-    {<br />
-        show_debug_message(&quot;Path doesn&#39;t exist!!!&quot;);<br />
-    }<br />
-    else<br />
-    {<br />
-        path_index = asset_get_index(&quot;pth_Path_&quot; + string(global.Game));<br />
-    }</p>
-  <p>The above code checks a dynamically created asset name to see if the asset is of the correct type. If it is not, then a debug message will be shown, otherwise the asset name is used to assign the asset to the instance.</p>
+  <p class="code">
+    var _path_name = "pth_Path_" + string(global.Game);
+
+    if (<span data-field="title" data-format="default">asset_get_type</span>(_path_name) != asset_path)
+    {
+        show_debug_message("Path " + _path_name + " doesn't exist!!!");
+    }
+    else
+    {
+        path_index = asset_get_index(_path_name);
+    }
+  </p>
+  <p>
+    The above code picks an asset (in this case a path) dynamically based on the value of a global variable. If a path
+    with that name does not exist, a debug message is shown. If the path does exist, it is assigned as the
+    <span class="inline">path_index</span> of the instance.
+  </p>
   <p> </p>
   <p> </p>
   <div class="footer">
