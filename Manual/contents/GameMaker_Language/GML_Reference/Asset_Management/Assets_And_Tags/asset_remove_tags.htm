@@ -52,13 +52,24 @@
   <p class="code"><span data-keyref="Type_Bool"><a href="../../../GML_Overview/Data_Types.htm" target="_blank">Boolean</a></span> (whether the tags could be removed)</p>
   <p> </p>
   <h4>Example:</h4>
-  <p class="code">var _a = array_create(3);<br />
-    _a[0] = &quot;enemy&quot;;<br />
-    _a[1] = &quot;all_levels&quot;;<br />
-    _a[2] = &quot;boss&quot;;<br />
-    <span data-field="title" data-format="default">asset_remove_tags</span>(obj_Enemy_Boss_Parent, _a, asset_object);
+  <p class="code">
+    if (hp &lt;= 0)
+    {
+        if (asset_has_tags(object_index, "undefeated", asset_object))
+        {
+            <span data-field="title" data-format="default">asset_remove_tags</span>(object_index, "undefeated", asset_object);
+            audio_play_sound(snd_defeat_new_enemy, 10, false);
+        }
+        
+        instance_destroy();
+    }
   </p>
-  <p>The above code will create an array of tags and then remove them from the given object.</p>
+  <p>
+    The above code runs when an enemy is attacked by the player. If the enemy's <span class="inline">hp</span> is less
+    than or equal to 0, it checks if this enemy type has not been defeated before, using the
+    <span class="inline">undefeated</span> tag. If it hasn't, the <span class="inline">undefeated</span> tag is removed,
+    and a sound is played to tell the player. Finally, the enemy's instance is destroyed.
+  </p>
   <p> </p>
   <p> </p>
   <div class="footer">
